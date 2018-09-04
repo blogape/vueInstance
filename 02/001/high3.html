@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id='app'>
+        <component :is='currentView'></component>
+        <button @click='handleChangeView("A")'>切换到A</button>
+        <button @click='handleChangeView("B")'>切换到B</button>
+        <button @click='handleChangeView("C")'>切换到C</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        var Home={
+            template:'<p>Welcome home</p>'
+        }
+        var app = new Vue({
+            el: '#app',
+            components: {
+                // 组件A
+                comA: {
+                    template: '<div>组件A</div>',
+                },
+                // 组件B
+                comB: {
+                    template: '<div>组件B</div>'
+                },
+               // 组件C
+                comC: {
+                    template: '<div>组件C</div>'
+                }
+            },
+            data: {
+                currentView: 'Home' //试试 'comA'  'comB'
+            },
+            methods: {
+                // 点击事件传值切换不同的组件
+                handleChangeView(component) {
+                    console.log(component)
+                    this.currentView = 'com' + component;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

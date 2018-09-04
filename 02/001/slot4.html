@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        <my-list :books='books'>
+            <!-- 作用域也可以是具名的solt -->
+            <template slot='book' scope='props'>
+                <li>{{props.bookName}}</li>
+            </template>
+        </my-list>
+    </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<script>
+    Vue.component('my-list',{
+        template:'\
+        <ul>\
+        <slot name="book" v-for="book in books" :book-name="book.name">\
+        </slot>\
+        </ul>\
+        ',
+        props:{
+            books:{
+                default:function(){
+                    return[];
+                }
+            }
+        }
+    })
+var app=new Vue({
+    el:'#app',
+    data:{
+        books:[
+            {name:'《vue实战》'},
+            {name:'《javascript语言精辟》'},
+            {name:'《javascript高级程序设计》'}
+        ]
+    }
+})
+</script>
+</body>
+</html>

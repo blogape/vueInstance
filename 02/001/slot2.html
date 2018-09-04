@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- slot分发内容 -->
+    <div id='app'>
+        <component-a>
+          <h2 slot='header'>标题</h2>
+          <p>正文内容</p>
+          <p>更多正文内容</p>
+          <div slot='footer'>底部信息</div>
+          跑回家军军军
+        </component-a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        Vue.component('component-a', {
+            template:'\
+            <div class="container">\
+            <div class="header">\
+            <slot name="header">\
+                <p>如果父组件没有插入内容，我将默认出现<p>\
+            </slot>\
+            </div>\
+            <div class="main">\
+           <slot></slot>\
+            </div>\
+            <div class="footer">\
+            <slot name="footer"></slot>\
+            </div>\
+            <div>\
+            '
+        })
+        var app = new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+
+</html>
