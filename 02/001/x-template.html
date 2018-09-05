@@ -15,10 +15,13 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 
+ <!-- 组件内容 id为 my-component   type 为text/x-template  -->
 <script type='text/x-template' id='my-component'>
 <div>  这是组件内容</div>
 </script>
+
 <script>
+    // 声明一个组件 my-component 引入id 为my-component
     Vue.component('my-component', {
         template: '#my-component'
     })
